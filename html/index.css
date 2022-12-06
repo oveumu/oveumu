@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-family: monospace;
+    font-weight: normal;
+}
+
+body {
+    background-color: black;
+    width: 100vw;
+    min-height: 100vh;
+    height: fit-content;
+    overflow-x: hidden;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation-name: fade;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.1s;
+}
+
+#container {
+    width: 100%;
+    max-width: 1000px;
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#container .box {
+    width: 200px;
+    height: 200px;
+    border: 1px solid white;
+    border-radius: 20px;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
