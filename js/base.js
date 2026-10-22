@@ -18,7 +18,7 @@ function setupAchievements(){
     .then(function(data){
         if(!data.startsWith("Namn"))
             throw "Invalid CSV";
-        let rows = data.replace(/[\r]/g, "").split("\n").slice(1).map(function(r){ return r.split(",").map(function(c){ return c.trim(); }); });
+        let rows = data.replace(/[\r]/g, "").replace(/\,/g, ";").split("\n").slice(1).map(function(r){ return r.split(";").map(function(c){ return c.trim(); }); });
         rows = sortAchievements(rows);
         for(let row of rows){
             let tr = document.createElement("tr");
@@ -56,6 +56,39 @@ function sortAchievements(rows){
         return (a[0]||"").localeCompare((b[0]||""));
     });
     return rows;
+}
+
+function setupColors(){
+    let table = document.getElementById("colors");
+    if(!table)
+        return;
+    [...table.getElementsByTagName("tr")].slice(1).forEach(tr => tr.remove());
+    let columns = table.getElementsByTagName("tr")[0].children.length;
+    fetch("data/colors.csv")
+    .then(function(r){ return r.text(); })
+    .then(function(data){
+        if(!data.startsWith("Färgkod"))
+            throw "Invalid CSV";
+        let rows = data.replace(/[\r]/g, "").split("\n").slice(1).map(function(r){ return r.split(";").map(function(c){ return c.trim(); }); });
+        if(rows.filter(function(r){ return r.length != 4; }).length)
+            throw "Invalid CSV rows";
+        for(let row of rows){
+            let tr = document.createElement("tr");
+            for(let i = 0;i < columns;i++){
+                let td = document.createElement("td");
+                if(i == 0)
+                    td.style.backgroundColor = row[i].match(/^#(?:[0-9a-fA-F]{3}){1,2}$/) ? row[i] : "transparent";
+                else
+                    td.innerText = i < row.length ? row[i].slice(0, 200) : "";
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+    })
+    .catch(function(err){
+        console.log("ERROR:", err);
+        alert("Kunde inte hämta overallfärger :/");
+    });
 }
 
 setupMenu();

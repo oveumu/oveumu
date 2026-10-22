@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="sv" dir="ltr">
+    <head>
+        <title>Overallfärger | Overallens vänner Umeå</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+        <meta name="msapplication-TileColor" content="#3e64ad">
+        <meta name="theme-color" content="#3e64ad">
+        <meta name="keywords" content="Overallens vänner Umeå, overallkultur, umeå, Umeå universitet, OvE, OvE Umeå"/>
+        <meta name="description" content="Vi är overallernas riddare, som verkar för att bevara den fantastiska kultur som är Overallskulturen! - Overallens vänner Umeå">
+        <meta name="language" content="sv">
+        <link rel="stylesheet" href="css/base.css">
+        <style>
+            @media only screen and (max-width: 950px) {
+                #mobile {
+                    display: flex;
+                }
+
+                #sidebar {
+                    display: none;
+                }
+
+                #main {
+                    width: 100%;
+                    min-width: 0;
+                    justify-content: flex-start;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header><img src="img/header.png"></header>
+        <div id="mobile">
+            <menu>
+                <li class="hidden">meny</li>
+                <li>::<a href="index.html">förstasidan</a>::</li>
+                <li>::<a href="jacket.html">jackbärare</a>::</li>
+                <li>::<a href="tisdag.html">märkestisdag</a>::</li>
+                <li>::<a href="achievements.html">achievements</a>::</li>
+                <li>::<a href="colors.html">overallfärger</a>::</li>
+                <li>::<a href="https://facebook.com/oveumu" target="_blank">facebook&#128279;</a>::</li>
+            </menu>
+        </div>
+        <div id="container">
+            <div id="sidebar">
+                <img src="img/logo.png" alt="logo">
+                <menu>
+                    <li>meny</li>
+                    <li>::<a href="index.html">förstasidan</a>::</li>
+                    <li>::<a href="jacket.html">jackbärare</a>::</li>
+                    <li>::<a href="tisdag.html">märkestisdag</a>::</li>
+                    <li>::<a href="achievements.html">achievements</a>::</li>
+                    <li>::<a href="colors.html">overallfärger</a>::</li>
+                    <li>::<a href="https://facebook.com/oveumu" target="_blank">facebook&#128279;</a>::</li>
+                </menu>
+            </div>
+            <div id="main">
+                <h1>Overallfärger</h1>
+                <p>
+                    Här nedan är, förutsatt att sidan är uppdaterad, alla overallfärger på Umeå universitet!
+                </p>
+                <table id="colors">
+                    <tr>
+                        <th>Färg</th>
+                        <th>Färgnamn</th>
+                        <th>Program/sektion</th>
+                        <th>Kår</th>
+                    </tr>
+                    <tr>
+                        <td style="background-color: black;"></td>
+                        <td>Svart</td>
+                        <td>Civilingenjör i teknisk fysik</td>
+                        <td>NTK</td>
+                    </tr>
+                </table>
+            </div>
+        </div>        
+    </body>
+    <script src="js/base.js"></script>
+    <script>
+        setupColors();
+    </script>
+</html>
