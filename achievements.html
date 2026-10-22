@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="sv" dir="ltr">
+    <head>
+        <title>Achievements | Overallens vänner Umeå</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+        <meta name="msapplication-TileColor" content="#3e64ad">
+        <meta name="theme-color" content="#3e64ad">
+        <meta name="keywords" content="Overallens vänner Umeå, overallkultur, umeå, Umeå universitet, OvE, OvE Umeå"/>
+        <meta name="description" content="Vi är overallernas riddare, som verkar för att bevara den fantastiska kultur som är Overallskulturen! - Overallens vänner Umeå">
+        <meta name="language" content="sv">
+        <link rel="stylesheet" href="css/base.css">
+        <style>
+            @media only screen and (max-width: 950px) {
+                #mobile {
+                    display: flex;
+                }
+
+                #sidebar {
+                    display: none;
+                }
+
+                #main {
+                    width: 100%;
+                    min-width: 0;
+                    justify-content: flex-start;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header><img src="img/header.png"></header>
+        <div id="mobile">
+            <menu>
+                <li class="hidden">meny</li>
+                <li>::<a href="index.html">förstasidan</a>::</li>
+                <li>::<a href="jacket.html">jackbärare</a>::</li>
+                <li>::<a href="tisdag.html">märkestisdag</a>::</li>
+                <li>::<a href="achievements.html">achievements</a>::</li>
+                <li>::<a href="https://facebook.com/oveumu" target="_blank">facebook&#128279;</a>::</li>
+            </menu>
+        </div>
+        <div id="container">
+            <div id="sidebar">
+                <img src="img/logo.png" alt="logo">
+                <menu>
+                    <li>meny</li>
+                    <li>::<a href="index.html">förstasidan</a>::</li>
+                    <li>::<a href="jacket.html">jackbärare</a>::</li>
+                    <li>::<a href="tisdag.html">märkestisdag</a>::</li>
+                    <li>::<a href="achievements.html">achievements</a>::</li>
+                    <li>::<a href="https://facebook.com/oveumu" target="_blank">facebook&#128279;</a>::</li>
+                </menu>
+            </div>
+            <div id="main">
+                <h1>Achievements</h1>
+                <p>
+                    Dessa personer har genom slit och mödor kämpat och samlat ihop otroliga mängder märken. Denna sida är en hyllning till alla dessa hjältar!
+                </p>
+                <table id="achievements">
+                    <tr>
+                        <th>Namn</th>
+                        <th style="background-color: white;color:black;">100 märken</th>
+                        <th style="background-color: rgb(73, 73, 236);color:black;">200 märken</th>
+                        <th style="background-color: rgb(31, 126, 31);color:black;">300 märken</th>
+                        <th style="background-color: rgb(194, 9, 178);color:black;">400 märken</th>
+                        <th style="background-color: black;color:white;">500 märken</th>
+                        <th style="background-color: rgb(255, 168, 6);color:white;">600 märken</th>
+                        <th style="background-color: rgb(80, 1, 73);color:white;">700 märken</th>
+                        <th style="background-color: rgb(27, 0, 126);color:white;">800 märken</th>
+                        <th style="background-color: rgb(255, 55, 55);color:black;">900 märken</th>
+                        <th style="background-color: goldenrod;color:black;">1000 märken!</th>
+                    </tr>
+                    <!--
+                    <tr>
+                        <td>William Nordberg</td>
+                        <td>2019</td>
+                        <td>2020</td>
+                        <td>2020</td>
+                        <td>2022</td>
+                        <td>2022</td>
+                        <td>2024</td>
+                        <td>2024</td>
+                        <td>2024</td>
+                        <td>2026</td>
+                        <td>2026</td>
+                    </tr>
+                    -->
+                </table>
+            </div>
+        </div>        
+    </body>
+    <script src="js/base.js"></script>
+    <script>
+        setupAchievements();
+    </script>
+</html>
