@@ -19,7 +19,7 @@ function setupAchievements(){
         if(!data.startsWith("Namn"))
             throw "Invalid CSV";
         let rows = data.replace(/[\r]/g, "").replace(/\,/g, ";").split("\n").slice(1).map(function(r){ return r.split(";").map(function(c){ return c.trim(); }); });
-        rows = sortAchievements(rows);
+        rows = sortAchievements(rows.filter(function(r){ return r.filter(function(c){ return c.length > 0; }).length > 1; }));
         for(let row of rows){
             let tr = document.createElement("tr");
             for(let i = 0;i < columns;i++){
@@ -38,8 +38,8 @@ function setupAchievements(){
 
 function sortAchievements(rows){
     rows.sort(function(a, b){
-        let aCols = a.filter(function(c){ return c.length > 1 });
-        let bCols = b.filter(function(c){ return c.length > 1 });
+        let aCols = a.filter(function(c){ return c.length > 0 });
+        let bCols = b.filter(function(c){ return c.length > 0 });
         // Sort first based on number of achievements
         if(bCols.length > aCols.length)
             return 1;
@@ -49,9 +49,9 @@ function sortAchievements(rows){
         let aTop = parseInt(a.slice(-1)) || 0;
         let bTop = parseInt(b.slice(-1)) || 0;
         if(bTop > aTop)
-            return 1;
-        else if(aTop > bTop)
             return -1;
+        else if(aTop > bTop)
+            return 1;
         // Lastly by name
         return (a[0]||"").localeCompare((b[0]||""));
     });
