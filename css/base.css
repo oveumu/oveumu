@@ -15,6 +15,7 @@ body {
     background-color: #3e64ad;
     padding-top: 0;
     overflow-x: hidden;
+    padding-bottom: 25px;
 }
 
 header {
@@ -47,6 +48,7 @@ h1 {
     display: none;
     justify-content: center;
     align-content: center;
+    margin-bottom: 10px;
 }
 
 #mobile menu li {
@@ -183,6 +185,11 @@ menu li a:hover {
     width: 140px;
 }
 
+#achievements .ove {
+    color: darkblue;
+    font-weight: bold;
+}
+
 #colors tr th, #colors tr td {
     padding: 0 6px;
 }
@@ -202,6 +209,14 @@ menu li a:hover {
 
 #colors tr td:nth-of-type(4), #colors tr th:nth-of-type(4) {
     width: 50px;
+}
+
+marquee {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+    font-size: 12px;
 }
 
 @media only screen and (max-width: 950px) {
