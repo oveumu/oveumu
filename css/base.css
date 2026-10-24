@@ -211,12 +211,15 @@ menu li a:hover {
     width: 50px;
 }
 
-marquee {
+#marquee {
     position: fixed;
     bottom: 0;
     width: 100%;
     height: 20px;
     font-size: 12px;
+    background-color:#3e64ad;
+    display: flex;
+    align-items: center;
 }
 
 @media only screen and (max-width: 950px) {
