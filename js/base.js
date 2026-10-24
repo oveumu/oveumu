@@ -6,15 +6,18 @@ function setupMenu(){
         setActive ? li[0].classList.remove("hidden") : li[0].classList.add("hidden");
     });
 }
-
 function setupAchievements(){
+    let lastModified = -1;
     let table = document.getElementById("achievements");
     if(!table)
         return;
     [...table.getElementsByTagName("tr")].slice(1).forEach(tr => tr.remove());
     let columns = table.getElementsByTagName("tr")[0].children.length;
     fetch("data/achievements.csv")
-    .then(function(r){ return r.text(); })
+    .then(function(r){
+        lastModified = Math.floor((new Date() - new Date(r.headers.get('Last-Modified')))/86400000);
+        return r.text();
+    })
     .then(function(data){
         if(!data.startsWith("Namn"))
             throw "Invalid CSV";
@@ -25,10 +28,14 @@ function setupAchievements(){
             for(let i = 0;i < columns;i++){
                 let td = document.createElement("td");
                 td.innerText = i < row.length ? row[i].slice(0, 80) : "";
+                if(row[0].endsWith("*"))
+                    td.classList.add("ove");
                 tr.appendChild(td);
             }
             table.appendChild(tr);
         }
+        if(!isNaN(lastModified) && lastModified >= 0)
+            document.getElementById("lastUpdate").innerText = lastModified;
     })
     .catch(function(err){
         console.log("ERROR:", err);
@@ -38,16 +45,16 @@ function setupAchievements(){
 
 function sortAchievements(rows){
     rows.sort(function(a, b){
-        let aCols = a.filter(function(c){ return c.length > 0 });
-        let bCols = b.filter(function(c){ return c.length > 0 });
+        let aCols = a.filter(function(c){ return c.length > 0; });
+        let bCols = b.filter(function(c){ return c.length > 0; });
         // Sort first based on number of achievements
         if(bCols.length > aCols.length)
             return 1;
         else if(aCols.length > bCols.length)
             return -1;
         // Secondly by first to the top achievement
-        let aTop = parseInt(a.slice(-1)) || 0;
-        let bTop = parseInt(b.slice(-1)) || 0;
+        let aTop = parseInt(aCols.slice(-1)) || 0;
+        let bTop = parseInt(bCols.slice(-1)) || 0;
         if(bTop > aTop)
             return -1;
         else if(aTop > bTop)
@@ -60,12 +67,16 @@ function sortAchievements(rows){
 
 function setupColors(){
     let table = document.getElementById("colors");
+    let lastModified = -1;
     if(!table)
         return;
     [...table.getElementsByTagName("tr")].slice(1).forEach(tr => tr.remove());
     let columns = table.getElementsByTagName("tr")[0].children.length;
     fetch("data/colors.csv")
-    .then(function(r){ return r.text(); })
+    .then(function(r){
+        lastModified = Math.floor((new Date() - new Date(r.headers.get('Last-Modified')))/86400000);
+        return r.text();
+    })
     .then(function(data){
         if(!data.startsWith("Färgkod"))
             throw "Invalid CSV";
@@ -84,6 +95,8 @@ function setupColors(){
             }
             table.appendChild(tr);
         }
+        if(!isNaN(lastModified) && lastModified >= 0)
+            document.getElementById("lastUpdate").innerText = lastModified;
     })
     .catch(function(err){
         console.log("ERROR:", err);
