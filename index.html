@@ -66,7 +66,17 @@
                     Med en overall på, har man aldrig lika tråkigt!
                 </p>
             </div>
-        </div>        
+        </div>
+        <marquee direction="left" id="marquee"><b style="padding:0 3px;">&#8280;</b>Timeless design<b style="padding:0 3px;">&#8280;</b></marquee>
+        <script>
+            let marquee_state = 0;
+            setInterval(function(){
+                marquee_state = !marquee_state;
+                let b = document.getElementById("marquee").getElementsByTagName("b");
+                b[0].innerHTML = marquee_state ? "&#8280;" : "&#8281;";
+                b[1].innerHTML = marquee_state ? "&#8280;" : "&#8281;";
+            }, 500);
+        </script>
     </body>
     <script src="js/base.js"></script>
 </html>
